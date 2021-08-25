@@ -75,16 +75,20 @@ const createA = function(){
 // })
 
 
+const answersByQuestionId = ()=>{
+  var prod = QA.questionsModel.findById("6126ad38d208d816d658286b")
 
-var prod = QA.questionsModel.findById("6126ad38d208d816d658286b")
-
-prod.then(all => {
-return QA.answersModel.find({_id: { $in : all.answers } })
+  prod.then(all => {
+  return QA.answersModel.find({_id: { $in : all.answers } })
+  }
+  ).then(docs => {
+    console.log(docs)
+  })
 }
-).then(docs => {
-  console.log(docs)
-})
 
+const allQuestions = (callback) => {
+  return QA.questionsModel.find({})
+}
 
 
 
@@ -101,3 +105,5 @@ return QA.answersModel.find({_id: { $in : all.answers } })
 //     all.answers.indexOf("6126922dd5dadf13325f17e8")
 //     )
 // })
+
+module.exports = {allQuestions}
