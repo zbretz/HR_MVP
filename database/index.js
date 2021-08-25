@@ -1,7 +1,8 @@
+//https://www.freecodecamp.org/news/introduction-to-mongoose-for-mongodb-d2a7aa593c57/
 const mongoose = require('mongoose');
 
 const server = 'localhost:27017'
-const database = 'blog_db'
+const database = 'qa'
 
 class Database {
   constructor(){

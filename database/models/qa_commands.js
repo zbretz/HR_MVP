@@ -1,0 +1,1 @@
+let QAModel = require('./qa')
