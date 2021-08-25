@@ -49,3 +49,22 @@ const createQ = function(username, email, bio){
 }
 
 // createQ()
+
+const createA = function(){
+  let answer = new QA.answersModel({
+    text: 'firstAnswer',
+    author: idToQuery,
+    question: q_Id
+  })
+  answer.save()
+  .then(doc => {
+    console.log(doc)
+    // callback(null, doc)
+  })
+  .catch(err => {
+    console.log(err)
+  //  callback(err, null)
+  })
+}
+
+createA()
