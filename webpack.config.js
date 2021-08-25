@@ -16,9 +16,10 @@
 // };
 
 const path = require('path');
+// const NodePolyfillPlugin = require("node-polyfill-webpack-plugin");
 
 module.exports = {
-  entry: path.resolve(__dirname, './src/index.js'),
+  entry: path.resolve(__dirname, './client/src/index.js'),
   module: {
     rules: [
       {
@@ -32,10 +33,13 @@ module.exports = {
     extensions: ['*', '.js']
   },
   output: {
-    path: path.resolve(__dirname, './dist'),
+    path: path.resolve(__dirname, './client/dist'),
     filename: 'bundle.js',
   },
   devServer: {
-    static: path.resolve(__dirname, './dist'),
+    static: path.resolve(__dirname, './client/dist'),
   },
+  // plugins: [
+  //   new NodePolyfillPlugin()
+  // ]
 };
