@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "client": "webpack serve --config ./webpack.config.js --mode development",
-    "server": "nodemon src/index.js",
+    "server": "nodemon server/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -34,6 +34,7 @@
   },
   "dependencies": {
     "express": "^4.17.1",
-    "node-polyfill-webpack-plugin": "^1.1.4"
+    "node-polyfill-webpack-plugin": "^1.1.4",
+    "nodemon": "^2.0.12"
   }
 }
