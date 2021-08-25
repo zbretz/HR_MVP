@@ -1,45 +1,47 @@
-//SO solution to an error thrown due to contentBase:
-// https://stackoverflow.com/questions/67926476/webpack-dev-server-config-contentbase-not-working-in-latest-version
+// const path = require('path');
 
 // module.exports = {
-//   // 1
-//   entry: './src/index.js',
-//   // 2
-//   output: {
-//     path: '/dist',
-//     filename: 'bundle.js'
+//   entry: path.resolve(__dirname, './client/src/index.jsx'),
+//   module: {
+//     rules: [
+//       {
+//         test: /\.(js|jsx)$/,
+//         exclude: /node_modules/,
+//         use: ['babel-loader']
+//       }
+//     ]
 //   },
-//   // 3
+//   resolve: {
+//     extensions: ['*', '.js', '.jsx'],
+//   },
+//   output: {
+//     path: path.resolve(__dirname, './client/dist'),
+//     filename: 'bundle.js',
+//   },
 //   devServer: {
-//     contentBase: './dist'
-//   }
+//     contentBase: path.resolve(__dirname, './client/dist'),
+//   },
 // };
 
-const path = require('path');
-// const NodePolyfillPlugin = require("node-polyfill-webpack-plugin");
+var path = require("path");
+var SRC_DIR = path.join(__dirname, "/client/src");
+var DIST_DIR = path.join(__dirname, "/client/dist");
 
 module.exports = {
-  entry: path.resolve(__dirname, './client/src/index.js'),
+  entry: `${SRC_DIR}/index.jsx`,
+  output: {
+    filename: "bundle.js",
+    path: DIST_DIR,
+  },
   module: {
     rules: [
       {
-        test: /\.(js)$/,
+        test: /\.jsx?/,
         exclude: /node_modules/,
-        use: ['babel-loader']
-      }
-    ]
+        use: {
+          loader: "babel-loader",
+        },
+      },
+    ],
   },
-  resolve: {
-    extensions: ['*', '.js']
-  },
-  output: {
-    path: path.resolve(__dirname, './client/dist'),
-    filename: 'bundle.js',
-  },
-  devServer: {
-    static: path.resolve(__dirname, './client/dist'),
-  },
-  // plugins: [
-  //   new NodePolyfillPlugin()
-  // ]
 };
