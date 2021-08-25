@@ -76,6 +76,15 @@ const createA = function(){
 
 
 
+var prod = QA.questionsModel.findById("6126ad38d208d816d658286b")
+
+prod.then(all => {
+return QA.answersModel.find({_id: { $in : all.answers } })
+}
+).then(docs => {
+  console.log(docs)
+})
+
 
 
 
