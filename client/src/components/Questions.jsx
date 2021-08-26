@@ -6,6 +6,7 @@ import {QuestionForm} from './QuestionForm.jsx';
 const Questions = () => {
 
   const [data, setData] = useState([]);
+  const [selectedQuestion, setSelectedQuestion] = useState('noChange');
 
   useEffect(() => {
     // fetch('http://localhost:3000/questions')
@@ -20,10 +21,11 @@ const Questions = () => {
 
   return (
     <>
+    <div>{selectedQuestion}</div>
     <div>{data.map(question => (
               <>
 
-      <div>{question[1][0]}</div>
+      <div><span>{question[1][0]}</span> <button onClick={()=>setSelectedQuestion(question[0])}>answer question</button></div>
       <div>
         {question[1].slice(1).map(
           answer => <p>{answer}</p>
@@ -36,6 +38,7 @@ const Questions = () => {
     {/* <div>{data}</div> */}
     <div>sdcedced</div>
     <QuestionForm/>
+    {/* <AnswerForm selectedQuestion={selectedQuestion} /> */}
     </>
   )
 }
