@@ -25,9 +25,12 @@ const Questions = () => {
     <div>{data.map(question => (
               <>
 
-      <div><span>{question[1][0]}</span> <button onClick={()=>setSelectedQuestionId(question[0])}>answer question</button></div>
       <div>
-        {question[1].slice(1).map(
+        <div>{question[1][0]}  < button onClick={()=>setSelectedQuestionId(question[0])}>answer question</button></div></div>
+        <p>{question[1][1]}</p>
+
+      <div>
+        {question[1].slice(2).map(
           answer => <p>{answer}</p>
         )}
       </div>
@@ -35,6 +38,7 @@ const Questions = () => {
 
     ))}
     </div>
+
     {/* <div>{data}</div> */}
     <div>sdcedced</div>
     <QuestionForm/>

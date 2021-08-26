@@ -122,11 +122,11 @@ const allAnswers = (questions, callback) => {
   QA.answersModel.find({})
   .then(a=>{
     a.forEach(a=>{
-      console.log(a)
+      // console.log(a)
     questions[String(a.question._id)].push([a.text])
     })
     questions = Object.keys(questions).map((key) => [key, questions[key]]);
-    console.log(questions)
+     console.log(questions)
     callback(null, questions)
 
     })
@@ -137,12 +137,12 @@ const allAnswers = (questions, callback) => {
 }
 
 const allQuestionsWithAnswers = (callback) => {
-  var questions = []
+  var questions = {}
 
   QA.questionsModel.find({})
   .then(q=>{
     q.forEach(q=>{
-    questions[q._id] = [q.title]
+    questions[q._id] = [q.title,q.text]
     })
     console.log(questions)
     allAnswers(questions, callback)
