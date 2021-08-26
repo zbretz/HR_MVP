@@ -11,16 +11,19 @@ app.get('/', (req, res) => {
 });
 
 app.get('/questions', (req, res) => {
-  db.allQuestions()
-  .then(docs => (
-    res.send(docs)
-    )
-  )
+  db.allQuestionsWithAnswers((err, data)=>{
+    res.json(data)
+    // res.send('sdfsdf')
+  })
+  // .then(docs => (
+  //   res.send(docs)
+  //   )
+  // )
   // res.send('Hello World!');
 });
 
 app.get('/api/questions', (req, res) => {
-  // res.send('Hello World!');
+  res.send('Hello World!');
 });
 
 app.listen(3000, () =>

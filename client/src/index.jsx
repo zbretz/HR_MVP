@@ -1,9 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import Questions from './components/Questions.jsx'
 
-const title = 'React with Webpack and Babel';
+
+const App = () => {
+  return (
+   <Questions/>
+  )
+}
 
 ReactDOM.render(
-  <div>{title}</div>,
+  <App/>,
   document.getElementById('app')
 );

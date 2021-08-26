@@ -86,9 +86,47 @@ const answersByQuestionId = ()=>{
   })
 }
 
-const allQuestions = (callback) => {
-  return QA.questionsModel.find({})
+
+
+var questions = {}
+
+const allAnswers = (callback) => {
+  QA.answersModel.find({})
+  .then(a=>{
+    a.forEach(a=>{
+    questions[String(a.question._id)].push(a)
+    })
+    callback(null, questions)
+
+    })
+
+    // return questions
+
 }
+
+const allQuestionsWithAnswers = (callback) => {
+  QA.questionsModel.find({})
+  .then(q=>{
+    q.forEach(q=>{
+    questions[q._id] = []
+    })
+    // console.log(questions)
+    allAnswers(callback)
+  })
+
+
+
+
+}
+
+
+
+// answersByQuestionId()
+// allQuestionsWithAnswers()
+// .then(q => console.log(q))
+// allAnswers()
+// .then(a => console.log(a))
+
 
 
 
@@ -106,4 +144,23 @@ const allQuestions = (callback) => {
 //     )
 // })
 
-module.exports = {allQuestions}
+module.exports = {allQuestionsWithAnswers}
+
+
+// QA.questionsModel.aggregate.lookup({
+//   from: QA.answersModel,
+//   localField: "_id",
+//   foreignField: "userId",
+//   as: 'answers'
+// })
+
+// QA.questionsModel.aggregate([{
+//   $lookup: {
+//   from: "Answers",
+//   localField: "question",
+//   foreignField: "_id",
+//   as: 'answwwwers'
+//   }
+// }], function(err,res){
+//   console.log(res)
+// })
