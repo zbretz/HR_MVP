@@ -12,7 +12,8 @@ app.get('/', (req, res) => {
 
 app.get('/questions', (req, res) => {
   db.allQuestionsWithAnswers((err, data)=>{
-    res.json(data)
+    console.log(data)
+    res.send(data)
     // res.send('sdfsdf')
   })
   // .then(docs => (

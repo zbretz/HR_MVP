@@ -88,14 +88,15 @@ const answersByQuestionId = ()=>{
 
 
 
-var questions = {}
+var questions = []
 
 const allAnswers = (callback) => {
   QA.answersModel.find({})
   .then(a=>{
     a.forEach(a=>{
-    questions[String(a.question._id)].push(a)
+    questions[String(a.question._id)].push([a.text])
     })
+    questions = Object.keys(questions).map((key) => [key, questions[key]]);
     callback(null, questions)
 
     })
