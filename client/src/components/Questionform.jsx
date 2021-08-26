@@ -28,7 +28,7 @@ const QuestionForm = (props) => {
   }
 
   return(
-    <div id='question-form'>
+    <div className={props.formDisplay} id='question-form'>
       <form onSubmit={(e)=>handleSubmit(e,{title,text})}>
       {/* </form><form onSubmit={useHandleSubmit(value)}> */}
           <label>
@@ -40,7 +40,7 @@ const QuestionForm = (props) => {
           </label>
           <input type="submit" value="Submit" />
         </form>
-      </dic>
+      </div>
   )
 
 }

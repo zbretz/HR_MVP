@@ -44,6 +44,18 @@ html {
 }
 
 
-button{
+.answer-button{
   float:right
+}
+
+#ask-button{
+  color:blue
+}
+
+.hideForm {
+  display: none;
+}
+
+.showForm {
+  display: block;
 }

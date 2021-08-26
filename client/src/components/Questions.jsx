@@ -8,6 +8,11 @@ const Questions = () => {
 
   const [data, setData] = useState([]);
   const [selectedQuestionId, setSelectedQuestionId] = useState('no question selected');
+  const [formDisplay, setFormDisplay] = useState('hideForm')
+
+  const toggleForm = () => {
+    formDisplay === 'hideForm' ? setFormDisplay('showForm') : setFormDisplay('hideForm')
+  }
 
   useEffect(() => {
     // fetch('http://localhost:3000/questions')
@@ -26,17 +31,21 @@ const Questions = () => {
 
     <div id='header'>
       Questions and Answers
+
+      <button id='ask-button' onClick={toggleForm}>Do you have a question, dear?</button>
+
+
     </div>
 
-    <QuestionForm/>
 
+    <QuestionForm formDisplay={formDisplay}/>
 
       <div>{data.map(question => (
                 <>
       <div className='question-answers'>
         <div className='question'>
           <div>
-            <div> <span className='question-title'> {question[1][0]}  </span><button onClick={()=>setSelectedQuestionId(question[0])}>answer question</button></div></div>
+            <div> <span className='question-title'> {question[1][0]}  </span><button className = 'answer-button' onClick={()=>setSelectedQuestionId(question[0])}>answer question</button></div></div>
             <p className="question-body">{question[1][1]}</p>
           </div>
 
