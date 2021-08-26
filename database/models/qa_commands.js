@@ -88,9 +88,8 @@ const answersByQuestionId = ()=>{
 
 
 
-var questions = []
 
-const allAnswers = (callback) => {
+const allAnswers = (questions, callback) => {
   QA.answersModel.find({})
   .then(a=>{
     a.forEach(a=>{
@@ -106,13 +105,15 @@ const allAnswers = (callback) => {
 }
 
 const allQuestionsWithAnswers = (callback) => {
+  var questions = []
+
   QA.questionsModel.find({})
   .then(q=>{
     q.forEach(q=>{
     questions[q._id] = [q.title]
     })
-    // console.log(questions)
-    allAnswers(callback)
+    console.log(questions)
+    allAnswers(questions, callback)
   })
 
 

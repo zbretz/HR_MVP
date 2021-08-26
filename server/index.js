@@ -12,7 +12,7 @@ app.get('/', (req, res) => {
 
 app.get('/questions', (req, res) => {
   db.allQuestionsWithAnswers((err, data)=>{
-    console.log(data)
+    // console.log(data)
     res.send(data)
     // res.send('sdfsdf')
   })
