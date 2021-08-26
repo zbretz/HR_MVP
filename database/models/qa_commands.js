@@ -59,17 +59,19 @@ const createA = function(){
   })
 }
 
-const createAForm = function(){
+create_q_id = '6126ad38d208d816d658286b'
+
+const createAForm = function(id){
   let answer = new QA.answersModel({
-    text: '2nd Q, 4th Answer',
+    text: '2nd Q, 6th Answer',
     author: idToQuery,
-    question: mongoose.Types.ObjectId('6126ad38d208d816d658286b')
+    question: mongoose.Types.ObjectId(id)
   })
-   answer.save()
+   return answer.save()
   .then(answer => {
     console.log(answer)
     return QA.questionsModel.findByIdAndUpdate(
-      '6126ad38d208d816d658286b',
+      id,
       {
         $push:{
           answers: answer._id
@@ -77,17 +79,16 @@ const createAForm = function(){
       },
       {new:true}
     )
-
-  })
-  .then(doc => {
-    console.log(doc)
-  })
-  .catch(err => {
-    console.log(err)
   })
 }
 
- createAForm()
+//  createAForm(create_q_id)
+//  .then(doc => {
+//   console.log(doc)
+// })
+// .catch(err => {
+//   console.log(err)
+// })
 
 // var ques = QA.questionsModel.findByIdAndUpdate(
 //   q_Id,
@@ -175,7 +176,7 @@ const allQuestionsWithAnswers = (callback) => {
 //     )
 // })
 
-module.exports = {allQuestionsWithAnswers, createQ}
+module.exports = {allQuestionsWithAnswers, createQ, createAForm}
 
 
 // QA.questionsModel.aggregate.lookup({
