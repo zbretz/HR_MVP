@@ -1,7 +1,11 @@
 const express = require('express');
 const path = require('path')
 const app = express();
+var bodyParser = require('body-parser');
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 let db = require('../database/models/qa_commands')
+
 
 app.use(express.static(path.join(__dirname, '../client/dist')))
 
@@ -18,6 +22,7 @@ app.get('/questions', (req, res) => {
 });
 
 app.post('/create_question', (req, res) => {
+  console.log(req.body)
   var title = req.body.title
   var text = req.body.text
   db.createQ(title, text)

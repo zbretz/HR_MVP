@@ -14,6 +14,7 @@ const QuestionForm = (props) => {
 
   function handleSubmit(e, post){
     const {title, text} = post
+    alert(text)
 
     e.preventDefault();
     axios.post('http://localhost:3000/create_question', {
