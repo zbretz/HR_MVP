@@ -28,17 +28,19 @@ const QuestionForm = (props) => {
   }
 
   return(
-    <form onSubmit={(e)=>handleSubmit(e,{title,text})}>
-    {/* </form><form onSubmit={useHandleSubmit(value)}> */}
-        <label>
-          Title:
-          <textarea id='create-title' value={title} onChange={()=>{setTitle(event.target.value)}}/>
-          {/* <textarea value={value} onChange={setValue(event.target.value)} onClick={clickHandler}/> */}
-          Text:
-          <textarea id='create-text' value={text} onChange={()=>{setText(event.target.value)}}/>
-        </label>
-        <input type="submit" value="Submit" />
-      </form>
+    <div id='question-form'>
+      <form onSubmit={(e)=>handleSubmit(e,{title,text})}>
+      {/* </form><form onSubmit={useHandleSubmit(value)}> */}
+          <label>
+            Title:
+            <textarea id='create-title' value={title} onChange={()=>{setTitle(event.target.value)}}/>
+            {/* <textarea value={value} onChange={setValue(event.target.value)} onClick={clickHandler}/> */}
+            Text:
+            <textarea id='create-text' value={text} onChange={()=>{setText(event.target.value)}}/>
+          </label>
+          <input type="submit" value="Submit" />
+        </form>
+      </dic>
   )
 
 }

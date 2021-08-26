@@ -22,26 +22,38 @@ const Questions = () => {
 
   return (
     <>
-    <div>{data.map(question => (
-              <>
+    <div id='content'>
 
-      <div>
-        <div>{question[1][0]}  < button onClick={()=>setSelectedQuestionId(question[0])}>answer question</button></div></div>
-        <p>{question[1][1]}</p>
-
-      <div>
-        {question[1].slice(2).map(
-          answer => <p>{answer}</p>
-        )}
-      </div>
-      </>
-
-    ))}
+    <div id='header'>
+      Questions and Answers
     </div>
 
-    {/* <div>{data}</div> */}
-    <div>sdcedced</div>
     <QuestionForm/>
+
+
+      <div>{data.map(question => (
+                <>
+      <div className='question-answers'>
+        <div className='question'>
+          <div>
+            <div> <span className='question-title'> {question[1][0]}  </span><button onClick={()=>setSelectedQuestionId(question[0])}>answer question</button></div></div>
+            <p className="question-body">{question[1][1]}</p>
+          </div>
+
+        <div>
+          {question[1].slice(2).map(
+            answer => <p className='answer'>{answer}</p>
+          )}
+        </div>
+      </div>
+        </>
+
+      ))}
+      </div>
+    </div>
+
+
+    {/* <div>{data}</div> */}
     <div>{selectedQuestionId}</div>
     <AnswerForm selectedQuestionId={selectedQuestionId} />
     </>
