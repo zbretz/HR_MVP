@@ -59,7 +59,35 @@ const createA = function(){
   })
 }
 
-// createA()
+const createAForm = function(){
+  let answer = new QA.answersModel({
+    text: '2nd Q, 4th Answer',
+    author: idToQuery,
+    question: mongoose.Types.ObjectId('6126ad38d208d816d658286b')
+  })
+   answer.save()
+  .then(answer => {
+    console.log(answer)
+    return QA.questionsModel.findByIdAndUpdate(
+      '6126ad38d208d816d658286b',
+      {
+        $push:{
+          answers: answer._id
+        }
+      },
+      {new:true}
+    )
+
+  })
+  .then(doc => {
+    console.log(doc)
+  })
+  .catch(err => {
+    console.log(err)
+  })
+}
+
+ createAForm()
 
 // var ques = QA.questionsModel.findByIdAndUpdate(
 //   q_Id,
