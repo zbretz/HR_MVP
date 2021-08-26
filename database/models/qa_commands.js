@@ -145,7 +145,7 @@ const allQuestionsWithAnswers = (callback) => {
 //     )
 // })
 
-module.exports = {allQuestionsWithAnswers}
+module.exports = {allQuestionsWithAnswers, createQ}
 
 
 // QA.questionsModel.aggregate.lookup({
