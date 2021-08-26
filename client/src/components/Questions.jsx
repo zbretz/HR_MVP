@@ -7,6 +7,7 @@ import {AnswerForm} from './AnswerForm.jsx';
 const Questions = () => {
 
   const [data, setData] = useState([]);
+  const [newData, setNewData] = useState()
   const [selectedQuestionId, setSelectedQuestionId] = useState('no question selected');
   const [formDisplay, setFormDisplay] = useState('hideForm')
 
@@ -17,13 +18,24 @@ const Questions = () => {
   useEffect(() => {
     // fetch('http://localhost:3000/questions')
     axios.get('http://localhost:3000/questions')
-      .then(response => (
+      .then(response => {
         setData(response.data)
         // console.log(response.data)
-        )
+
+      }
       )
       .catch((error) => console.log(error.message));
   }, [])
+
+  // let newQ = document.createElement("div");
+
+  //   <div className='question'>
+  //     <div>
+  //       <div> <span className='question-title'> {question[1][0]}  </span><button className = 'answer-button' onClick={()=>setSelectedQuestionId(question[0])}>answer question</button>
+  //       </div>
+  //     </div>
+  //     <p className="question-body">{question[1][1]}</p>
+  //   </div>
 
   return (
     <>
@@ -32,13 +44,13 @@ const Questions = () => {
     <div id='header'>
       Questions and Answers
 
-      <button id='ask-button' onClick={toggleForm}>Do you have a question, dear?</button>
+      <button id='ask-button' onClick={toggleForm}>Do you have a question, my dear?</button>
 
 
     </div>
 
 
-    <QuestionForm formDisplay={formDisplay}/>
+    <QuestionForm data={data} setData={setData} formDisplay={formDisplay}/>
 
       <div>{data.map(question => (
                 <>

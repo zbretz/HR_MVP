@@ -20,9 +20,13 @@ const QuestionForm = (props) => {
       title: title,
       text: text
     })
-    .then(response => (
+    .then(response => {
       alert(response)
-      )
+      console.log([response.data.text, response.data.title])
+      alert(props.data[0])
+      props.setData(['fake_id',response.data.text, response.data.title])
+      // props.setData((props.data) => [response, ...props.data])
+    }
     )
     .catch((error) => console.log(error.message));
   }
