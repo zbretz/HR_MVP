@@ -109,7 +109,7 @@ const allQuestionsWithAnswers = (callback) => {
   QA.questionsModel.find({})
   .then(q=>{
     q.forEach(q=>{
-    questions[q._id] = []
+    questions[q._id] = [q.title]
     })
     // console.log(questions)
     allAnswers(callback)

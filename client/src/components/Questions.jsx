@@ -19,9 +19,18 @@ const Questions = () => {
   return (
     <>
     <div>{data.map(question => (
-      <p>{question}</p>
-    ))
-    }</div>
+              <>
+
+      <div>{question[1][0]}</div>
+      <div>
+        {question[1].slice(1).map(
+          answer => <p>{answer}</p>
+        )}
+      </div>
+      </>
+
+    ))}
+    </div>
     {/* <div>{data}</div> */}
     <div>sdcedced</div>
     </>
