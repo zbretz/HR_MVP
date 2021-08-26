@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 const axios = require('axios');
+import {QuestionForm} from './QuestionForm.jsx';
+
 
 const Questions = () => {
 
@@ -33,6 +35,7 @@ const Questions = () => {
     </div>
     {/* <div>{data}</div> */}
     <div>sdcedced</div>
+    <QuestionForm/>
     </>
   )
 }

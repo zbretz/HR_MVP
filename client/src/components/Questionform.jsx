@@ -5,7 +5,7 @@ const axios = require('axios');
 
 
 
-const CreateQuestion = (props) => {
+const QuestionForm = (props) => {
 
   const [title, setTitle] = useState('');
   const [text, setText] = useState('');
@@ -44,4 +44,4 @@ const CreateQuestion = (props) => {
 }
 
 
-export {Create};
+export {QuestionForm};

@@ -15,19 +15,19 @@ idToQuery = mongoose.Types.ObjectId(idToQuery)
 // '6126ad2971fb4616c1b95c04'
 // '6126ad38d208d816d658286b'
 
-const createQ = function(username, email, bio){
+const createQ = function(title, text){
   let question = new QA.questionsModel({
-    title: 'second question',
-    text: 'second question text',
+    title: title,
+    text: text,
     author: idToQuery
   })
-  question.save()
-  .then(doc => {
-    console.log(doc)
-  })
-  .catch(err => {
-    console.log(err)
-  })
+  return question.save()
+  // .then(doc => {
+  //   console.log(doc)
+  // })
+  // .catch(err => {
+  //   console.log(err)
+  // })
 }
 
 //  createQ()
@@ -96,6 +96,7 @@ const allAnswers = (questions, callback) => {
     questions[String(a.question._id)].push([a.text])
     })
     questions = Object.keys(questions).map((key) => [key, questions[key]]);
+    console.log(questions)
     callback(null, questions)
 
     })

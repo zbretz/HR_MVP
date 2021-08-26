@@ -14,13 +14,15 @@ app.get('/questions', (req, res) => {
   db.allQuestionsWithAnswers((err, data)=>{
     // console.log(data)
     res.send(data)
-    // res.send('sdfsdf')
   })
-  // .then(docs => (
-  //   res.send(docs)
-  //   )
-  // )
-  // res.send('Hello World!');
+});
+
+app.post('/create_question', (req, res) => {
+  var title = req.body.title
+  var text = req.body.text
+  db.createQ(title, text)
+  .then(doc => res.send(doc))
+  .catch(err => console.log(err))
 });
 
 app.get('/api/questions', (req, res) => {
