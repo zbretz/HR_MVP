@@ -61,9 +61,9 @@ const createA = function(){
 
 create_q_id = '6126ad38d208d816d658286b'
 
-const createAForm = function(id){
+const createAForm = function(id, text){
   let answer = new QA.answersModel({
-    text: '2nd Q, 6th Answer',
+    text: text,
     author: idToQuery,
     question: mongoose.Types.ObjectId(id)
   })
@@ -122,6 +122,7 @@ const allAnswers = (questions, callback) => {
   QA.answersModel.find({})
   .then(a=>{
     a.forEach(a=>{
+      console.log(a)
     questions[String(a.question._id)].push([a.text])
     })
     questions = Object.keys(questions).map((key) => [key, questions[key]]);
@@ -129,6 +130,7 @@ const allAnswers = (questions, callback) => {
     callback(null, questions)
 
     })
+    .catch(err => {console.log(err)})
 
     // return questions
 
@@ -145,9 +147,6 @@ const allQuestionsWithAnswers = (callback) => {
     console.log(questions)
     allAnswers(questions, callback)
   })
-
-
-
 
 }
 

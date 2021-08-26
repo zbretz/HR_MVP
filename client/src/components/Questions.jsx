@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
 const axios = require('axios');
 import {QuestionForm} from './QuestionForm.jsx';
+import {AnswerForm} from './AnswerForm.jsx';
 
 
 const Questions = () => {
 
   const [data, setData] = useState([]);
-  const [selectedQuestion, setSelectedQuestion] = useState('noChange');
+  const [selectedQuestionId, setSelectedQuestionId] = useState('no question selected');
 
   useEffect(() => {
     // fetch('http://localhost:3000/questions')
@@ -21,11 +22,10 @@ const Questions = () => {
 
   return (
     <>
-    <div>{selectedQuestion}</div>
     <div>{data.map(question => (
               <>
 
-      <div><span>{question[1][0]}</span> <button onClick={()=>setSelectedQuestion(question[0])}>answer question</button></div>
+      <div><span>{question[1][0]}</span> <button onClick={()=>setSelectedQuestionId(question[0])}>answer question</button></div>
       <div>
         {question[1].slice(1).map(
           answer => <p>{answer}</p>
@@ -38,7 +38,8 @@ const Questions = () => {
     {/* <div>{data}</div> */}
     <div>sdcedced</div>
     <QuestionForm/>
-    {/* <AnswerForm selectedQuestion={selectedQuestion} /> */}
+    <div>{selectedQuestionId}</div>
+    <AnswerForm selectedQuestionId={selectedQuestionId} />
     </>
   )
 }

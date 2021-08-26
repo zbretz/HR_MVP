@@ -31,22 +31,13 @@ app.post('/create_question', (req, res) => {
 });
 
 app.post('/create_answer', (req, res) => {
-  var create_q_id = '6126ad38d208d816d658286b'
-  // console.log(req.body)
-  // var title = req.body.title
-  // var text = req.body.text
+  // var create_q_id = '6126ad38d208d816d658286b'
+  var question_id = req.body.question_id
+  var text = req.body.text
   // db.createAForm(title, text)
-  db.createAForm(create_q_id)
+  db.createAForm(question_id, text)
   // .then(doc => res.send(doc))
   // .catch(err => console.log(err))
-  .then(doc => {
-    console.log(doc)
-    res.send(doc)
-
-  })
-  .catch(err => {
-    console.log(err)
-  })
 });
 
 app.get('/api/questions', (req, res) => {

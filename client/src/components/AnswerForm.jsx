@@ -4,19 +4,16 @@ const axios = require('axios');
 // https://reactjs.org/docs/forms.html
 
 
-const QuestionForm = (props) => {
+const AnswerForm = (props) => {
 
-  const [title, setTitle] = useState('');
   const [text, setText] = useState('');
 
-  function handleSubmit(e, post){
-    const {title, text} = post
-    const question_id =
+  function handleSubmit(e, text){
+    const question_id = props.selectedQuestionId
 
     e.preventDefault();
     axios.post('http://localhost:3000/create_answer', {
-      question_id: ,
-      title: title,
+      question_id: question_id,
       text: text
     })
     .then(response => (
@@ -27,12 +24,9 @@ const QuestionForm = (props) => {
   }
 
   return(
-    <form onSubmit={(e)=>handleSubmit(e,{title,text})}>
+    <form onSubmit={(e)=>handleSubmit(e, text)}>
     {/* </form><form onSubmit={useHandleSubmit(value)}> */}
         <label>
-          Title:
-          <textarea id='create-title' value={title} onChange={()=>{setTitle(event.target.value)}}/>
-          {/* <textarea value={value} onChange={setValue(event.target.value)} onClick={clickHandler}/> */}
           Text:
           <textarea id='create-text' value={text} onChange={()=>{setText(event.target.value)}}/>
         </label>
@@ -43,4 +37,4 @@ const QuestionForm = (props) => {
 }
 
 
-export {QuestionForm};
+export {AnswerForm};
