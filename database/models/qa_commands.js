@@ -6,15 +6,6 @@ let mongoose = require('mongoose')
 let idToQuery = "4ecc05e55dd98a436ddcc47c";
 idToQuery = mongoose.Types.ObjectId(idToQuery)
 
-// let q_Id = "6125b4b858dd643905644abc"
-// q_Id = mongoose.Types.ObjectId(q_Id)
-
-// randAnsId = q_Id = "6125b4b858dd643905644cfd"
-// randAnsId = mongoose.Types.ObjectId(randAnsId)
-
-// '6126ad2971fb4616c1b95c04'
-// '6126ad38d208d816d658286b'
-
 const createQ = function(title, text){
   let question = new QA.questionsModel({
     title: title,
@@ -22,15 +13,7 @@ const createQ = function(title, text){
     author: idToQuery
   })
   return question.save()
-  // .then(doc => {
-  //   console.log(doc)
-  // })
-  // .catch(err => {
-  //   console.log(err)
-  // })
 }
-
-//  createQ()
 
 const createA = function(){
   let answer = new QA.answersModel({
